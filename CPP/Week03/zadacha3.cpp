@@ -3,7 +3,7 @@ using namespace std;
 
 int year_checker(int year)
 {
-    if ((year % 4 == 0 && year % 100 == 0) || (year % 400 == 0)){
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)){
         cout << "Leap year" << endl;
     }else {
         cout << "Not a leap year" << endl;
