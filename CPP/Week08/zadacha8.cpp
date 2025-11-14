@@ -24,18 +24,18 @@ public:
     void setLength(double l){
         if (l < 0){
             cout << "Error given length is negative!" << endl;
-            return;
+            length = 1.0;
+        }else {
+            length = l;
         }
-
-        length = l;
     }
     void setWidth(double w){
         if (w < 0){
             cout << "Error given width is negative!" << endl;
-            return;
+            width = 1.0;
+        }else {
+            width = w;
         }
-
-        width = w;
     }
 
     double getLength(){return length;}
@@ -59,7 +59,7 @@ int main()
 
     r1.setLength(-5.0);
 
-    if (r1.getLength() == 10.0){
+    if (r1.getLength() == 1.0){
         cout << "Ma setter works" << endl;
     }
 
