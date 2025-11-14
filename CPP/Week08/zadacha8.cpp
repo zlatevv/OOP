@@ -38,8 +38,8 @@ public:
         }
     }
 
-    double getLength(){return length;}
-    double getWidth(){return width;}
+    double getLength() const {return length;}
+    double getWidth() const {return width;}
 
     double calculateArea(){return length * width;}
     double calculatePerimeter(){return 2 * (length + width);}
