@@ -8,7 +8,7 @@ private:
     int birthYear;
 public:
     Author(): name("Unknown"), birthYear(1900) {}
-    Author(std::string name, int birthYear): name(name), birthYear(birthYear) {}
+    Author(const std::string& name, int birthYear): name(name), birthYear(birthYear) {}
 
     ~Author() = default;
 
@@ -16,10 +16,10 @@ public:
         return "The man, the myth, the legend: " + name + "! Born in " + std::to_string(birthYear);
     };
 
-    std::string getName(){return name;}
-    int getYear(){return birthYear;}
+    std::string getName() const {return name;}
+    int getYear() const {return birthYear;}
 
-    void setName(std::string name){
+    void setName(const std::string& name){
         if (name.empty()){
             throw std::invalid_argument("Invalid data for name!");
         }
@@ -27,8 +27,8 @@ public:
     }
 
     void setBirthYear(int year){
-        if (year <= 1900 || year >= 2500){
-            throw std::invalid_argument("You sure you born that year bro?");
+        if (year < 1850 || year > 2025){
+            throw std::invalid_argument("You sure the author born that year bro?");
         }
 
         this->birthYear = year;
