@@ -8,18 +8,18 @@ class Book {
     private:
         std::string title;
         Author author;
-        double price;
         int year;
+        double price;
         std::string isbn;
         static int totalBooks;
     public:
-        Book() : title(""), author(), price(0.0), year(0), isbn("") {
+        Book() : title(""), author(), year(0), price(0.0), isbn("") {
             totalBooks++;
         }
         ~Book() {totalBooks--;};
 
         Book(const std::string& title, const Author& author, int year, double price, const std::string& isbn)
-            : title(std::move(title)), author(std::move(author)), price(price), year(year), isbn(std::move(isbn)) {totalBooks++;}
+            : title(std::move(title)), author(std::move(author)), year(year),  price(price), isbn(std::move(isbn)) {totalBooks++;}
         
         Book(const Book& other)
             : title(std::move(other.title)),

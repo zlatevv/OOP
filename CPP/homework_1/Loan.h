@@ -6,8 +6,8 @@ class Loan {
     private:
         std::string isbn;
         std::string memberId;
-        std::string dueDate;
         std::string startDate;
+        std::string dueDate;
         bool returned;
     public:
         Loan(const std::string& isbn, const std::string& memberId, const std::string& startDate,  const std::string&
