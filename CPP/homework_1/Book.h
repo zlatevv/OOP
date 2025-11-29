@@ -1,6 +1,7 @@
+
 #include <iostream>
 #include <stdexcept>
-#include "Author.cpp"
+#include "Author.h"
 using namespace std;
 
 class Book {
@@ -17,15 +18,15 @@ class Book {
         }
         ~Book() {totalBooks--;};
 
-        Book(const std::string& title, const Author& author, double price, int year, const std::string& isbn)
-            : title(title), author(author), price(price), year(year), isbn(isbn) {totalBooks++;}
+        Book(const std::string& title, const Author& author, int year, double price, const std::string& isbn)
+            : title(std::move(title)), author(std::move(author)), price(price), year(year), isbn(std::move(isbn)) {totalBooks++;}
         
         Book(const Book& other)
-            : title(other.title),
-            author(other.author),
-            price(other.price),
+            : title(std::move(other.title)),
+            author(std::move(other.author)),
             year(other.year),
-            isbn(other.isbn)
+            price(other.price),
+            isbn(std::move(other.isbn))
             {
                 totalBooks++;
             }
@@ -92,6 +93,12 @@ class Book {
         }
 
         static int getTotalBooks(){ return totalBooks;}
+
+        std::string getTitle() const{ return title;}
+        std::string getISBN() const{ return isbn;}
+        Author getAuthor() const{ return author;}
+        int getYear() const{ return year;}
+        double getPrice() const{return price;}
 
         string to_string() const {
             return "Title: " + title + ", Author: " + author.to_string() +
